@@ -1,4 +1,7 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:message_buddy/helper/helper_functions.dart';
 import 'package:message_buddy/service/database_service.dart';
 
@@ -21,7 +24,7 @@ class AuthService {
         return true;
       }
     } on FirebaseAuthException catch (e) {
-      print(e);
+      debugPrint(e as String);
       return e.message;
     }
   }
@@ -45,7 +48,7 @@ class AuthService {
         return true;
       }
     } on FirebaseAuthException catch (e) {
-      print(e);
+      debugPrint(e as String);
       return e.message;
     }
   }

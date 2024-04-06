@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:message_buddy/screens/chat_screen.dart';
-import 'package:message_buddy/screens/profile_screen.dart';
 import 'package:message_buddy/widgets/constants.dart';
 
 class GroupTile extends StatefulWidget {

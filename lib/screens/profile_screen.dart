@@ -70,7 +70,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               thickness: 1,
               color: Colors.black54,
             ),
-            DrawerButton(
+            MyButton(
               selected: false,
               icon: Icons.group,
               action: 'Groups',
@@ -85,7 +85,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 color: Colors.black54,
               ),
             ),
-            DrawerButton(
+            MyButton(
               selected: true,
               icon: Icons.account_circle_sharp,
               action: 'Profile',
@@ -100,7 +100,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 color: Colors.black54,
               ),
             ),
-            DrawerButton(
+            MyButton(
               icon: Icons.logout,
               action: 'Logout',
               onTap: () async {

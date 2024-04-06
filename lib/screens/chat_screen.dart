@@ -126,45 +126,24 @@ class _ChatScreenState extends State<ChatScreen> {
   chatMessages() {
     return StreamBuilder(
       stream: chats,
-      builder: (context, AsyncSnapshot<dynamic> snapshot) {
-        if (snapshot.hasData) {
-          return ListView.builder(
-            itemCount: snapshot.data.docs.length,
-            itemBuilder: (context, index) {
-              return MessagesTile(
-                message: snapshot.data.docs[index]['message'],
-                sender: snapshot.data.docs[index]['sender'],
-                sentByMe:
-                    widget.userName == snapshot.data.docs[index]['sender'],
+      builder: (context, AsyncSnapshot snapshot) {
+        return snapshot.hasData
+            ? ListView.builder(
+                itemCount: snapshot.data.docs.length,
+                itemBuilder: (context, index) {
+                  return MessagesTile(
+                      message: snapshot.data.docs[index]['message'],
+                      sender: snapshot.data.docs[index]['sender'],
+                      sentByMe: widget.userName ==
+                          snapshot.data.docs[index]['sender']);
+                },
+              )
+            : Center(
+                child: Text(
+                  'Start a conversation...',
+                  style: smallHeading,
+                ),
               );
-            },
-          );
-        } else {
-          return Center(
-            child: Text(
-              'Start a conversation...',
-              style: smallHeading,
-            ),
-          );
-        }
-        // return snapshot.hasData
-        //     ? ListView.builder(
-        //         itemCount: snapshot.data.docs.length,
-        //         itemBuilder: (context, index) {
-        //           return MessagesTile(
-        //             message: snapshot.data.docs[index]['message'],
-        //             sender: snapshot.data.docs[index]['sender'],
-        //             sentByMe:
-        //                 widget.userName == snapshot.data.docs[index]['sender'],
-        //           );
-        //         },
-        //       )
-        //     : Center(
-        //         child: Text(
-        //           'Start a conversation...',
-        //           style: smallHeading,
-        //         ),
-        //       );
       },
     );
   }

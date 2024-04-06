@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:message_buddy/widgets/constants.dart';
 
-class DrawerButton extends StatelessWidget {
+class MyButton extends StatelessWidget {
   final IconData icon;
   final String action;
   final VoidCallback onTap;
   final bool selected;
 
-  const DrawerButton(
+  const MyButton(
       {super.key,
       required this.icon,
       required this.action,

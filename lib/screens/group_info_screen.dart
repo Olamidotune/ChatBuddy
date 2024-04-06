@@ -1,11 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:message_buddy/auth/login_screen.dart';
 import 'package:message_buddy/screens/home_screen.dart';
 import 'package:message_buddy/service/auth_service.dart';
 import 'package:message_buddy/service/database_service.dart';
 import 'package:message_buddy/widgets/constants.dart';
-import 'package:message_buddy/widgets/members_tile.dart';
 import 'package:sizer/sizer.dart';
 
 class GroupInfoScreen extends StatefulWidget {

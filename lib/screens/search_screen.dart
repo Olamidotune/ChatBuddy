@@ -129,6 +129,15 @@ class _SearchScreenState extends State<SearchScreen> {
           hasUserSearch = true;
         });
       });
+    } else {
+      searchController.text.isEmpty;
+      setState(() {
+        showSnackBar(
+          context,
+          Colors.red,
+          'Search field cannot be empty',
+        );
+      });
     }
   }
 
@@ -181,67 +190,68 @@ class _SearchScreenState extends State<SearchScreen> {
         style: normalText,
       ),
       trailing: InkWell(
-          onTap: () async {
-            await DataBaseService(uid: user!.uid)
-                .toggleGroupJoin(userName, groupId, groupName);
-            if (isJoined) {
-              setState(() {
-                isJoined = !isJoined;
-                showSnackBar(
-                    context, Colors.green, 'Successfully joined $groupName');
-              });
+        onTap: () async {
+          await DataBaseService(uid: user!.uid)
+              .toggleGroupJoin(userName, groupId, groupName);
+          if (isJoined) {
+            setState(() {
+              isJoined = !isJoined;
+              showSnackBar(
+                  context, Colors.green, 'Successfully joined $groupName');
+            });
 
-              Future.delayed(
-                const Duration(seconds: 1),
-                () {
-                  nextScreen(
-                      context,
-                      ChatScreen(
-                          groupId: groupId,
-                          groupName: groupName,
-                          userName: userName));
-                },
-              );
-            } else {
-              setState(() {
-                isJoined = !isJoined;
-                showSnackBar(context, Colors.red, 'You\'ve left $groupName');
-              });
-              Future.delayed(
-                const Duration(seconds: 1),
-                () {
-                  nextScreen(context, const HomeScreen());
-                },
-              );
-            }
-          },
-          child: isJoined
-              ? Container(
-                  height: 40,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: Colors.black),
-                  child: Center(
-                    child: Text(
-                      'Joined',
-                      style: normalText,
-                    ),
+            Future.delayed(
+              const Duration(seconds: 1),
+              () {
+                nextScreen(
+                    context,
+                    ChatScreen(
+                        groupId: groupId,
+                        groupName: groupName,
+                        userName: userName));
+              },
+            );
+          } else {
+            setState(() {
+              isJoined = !isJoined;
+              showSnackBar(context, Colors.red, 'You\'ve left $groupName');
+            });
+            Future.delayed(
+              const Duration(seconds: 1),
+              () {
+                nextScreen(context, const HomeScreen());
+              },
+            );
+          }
+        },
+        child: isJoined
+            ? Container(
+                height: 40,
+                width: 100,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Colors.black),
+                child: Center(
+                  child: Text(
+                    'Joined',
+                    style: normalText,
                   ),
-                )
-              : Container(
-                  height: 40,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: Colors.black),
-                  child: Center(
-                    child: Text(
-                      'Join Group',
-                      style: normalText,
-                    ),
+                ),
+              )
+            : Container(
+                height: 40,
+                width: 100,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Colors.black),
+                child: Center(
+                  child: Text(
+                    'Join Group',
+                    style: normalText,
                   ),
-                )),
+                ),
+              ),
+      ),
     );
   }
 }

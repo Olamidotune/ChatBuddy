@@ -61,7 +61,6 @@ class _MyAppState extends State<MyApp> {
       builder: (BuildContext context, Orientation orientation,
           DeviceType deviceType) {
         return MaterialApp(
-          
           themeMode: ThemeMode.dark,
           darkTheme: ThemeData.dark(),
           debugShowCheckedModeBanner: false,

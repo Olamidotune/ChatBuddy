@@ -90,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
               thickness: 2,
               color: Colors.black,
             ),
-            DrawerButton(
+            MyButton(
               selected: true,
               icon: Icons.group,
               action: 'Groups',
@@ -103,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: Colors.black54,
               ),
             ),
-            DrawerButton(
+            MyButton(
               selected: false,
               icon: Icons.account_circle_sharp,
               action: 'Profile',
@@ -118,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: Colors.black54,
               ),
             ),
-            DrawerButton(
+            MyButton(
               icon: Icons.logout,
               action: 'Logout',
               onTap: () async {
@@ -171,7 +171,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-
+ 
   popUpDialog(BuildContext context) {
     showDialog(
       barrierDismissible: false,
